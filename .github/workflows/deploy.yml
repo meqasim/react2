@@ -37,8 +37,8 @@ jobs:
     - name: creating build
       uses: yarn build
       
-      - name: installing surge
-      uses: npm install -g surge
-      
-      - name: deploying on surge
-      uses: surge ./build http://qasimbootcamp2020assignment2.surge.sh/ --token ${{secrets.SURGEA2}}
+      - name: Install Surge
+      run: npm install -g surge
+
+    - name: Deploy to Surge
+      run:  surge ./build http://qasimbootcamp2020assignment2.surge.sh/ --token ${{secrets.SURGEA2}}
