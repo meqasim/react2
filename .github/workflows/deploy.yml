@@ -22,19 +22,17 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v-2
+    - uses: actions/checkout@v2
 
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v2.4.1
+    - name: Setup Node
+      uses: actions/setup-node@v2-beta
       with:
-        version: 12
-        
-    - name: GitHub Action for Yarn
-    uses: Borales/actions-yarn@v2.3.0
-   with:
-   
-    cmd: install
+          node-version: 12
+
+    - name: Build React App
+      run: |
+        npm install # Install Dependencies
+        CI=false npm run build # CI=false to ignore warnings
     
     - name: creating build
       uses: yarn build
